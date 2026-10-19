@@ -148,3 +148,10 @@ SubscriptionStoreView(
 }
 ```
 
+
+
+## Continuous integration
+
+The Build workflow compiles the app, its embedded widgets and its three local Swift packages in Debug and Release for iOS Simulator, macOS and watchOS Simulator, using the runner's existing Xcode. Builds are unsigned and do not require an Apple account. No tools or simulator runtimes are installed.
+
+This is build validation only: the repository has no implemented test targets (the watch scheme still references removed template tests). CI does not launch the apps, perform StoreKit purchases, access CloudKit or validate UI and SwiftData behavior. Project settings, entitlements and StoreKit configuration remain unchanged.
