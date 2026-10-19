@@ -40,14 +40,14 @@ jobs:
           set -euo pipefail
           scheme='Backyard Birds'
           case "$PLATFORM" in
-            iOS) sdk=iphonesimulator; destination='generic/platform=iOS Simulator' ;;
-            macOS) sdk=macosx; destination='platform=macOS' ;;
-            watchOS) sdk=watchsimulator; destination='generic/platform=watchOS Simulator'; scheme='Widgets (Watch)' ;;
+            iOS) destination='generic/platform=iOS Simulator' ;;
+            macOS) destination='platform=macOS' ;;
+            watchOS) destination='generic/platform=watchOS Simulator'; scheme='Widgets (Watch)' ;;
             *) exit 1 ;;
           esac
           mkdir -p "$RUNNER_TEMP/build-logs"
           xcodebuild -project 'Backyard Birds.xcodeproj' -scheme "$scheme" \
-            -configuration "$CONFIGURATION" -sdk "$sdk" \
+            -configuration "$CONFIGURATION" \
             -destination "$destination" -jobs 2 \
             -derivedDataPath "$RUNNER_TEMP/backyard-build" \
             CODE_SIGNING_ALLOWED=NO CODE_SIGN_IDENTITY=- DEVELOPMENT_TEAM= \
